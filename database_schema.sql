@@ -3,7 +3,7 @@ Table Beverage {
   name varchar(255)
   description varchar(255)
   price real
-  quantity int
+  available_quantity int
   brand varchar(255)
   alcohol_percentage real
   category_id int [ref: > Category.id]
@@ -14,6 +14,14 @@ Table Category {
   name varchar(255)
 }
 
+Table User {
+  id int [primary key]
+  email varchar(255)
+  password_hash text
+  refresh_token text
+  role_id int [ref: > Role.id]
+}
+
 Table Employee {
   id int [primary key]
   first_name varchar(255)
@@ -21,21 +29,18 @@ Table Employee {
   salary real
   phone char(50)
   position varchar(255)
-  password varchar(255)
   email varchar(255)
-  role_id int [ref: > Role.id]
-}
-
-Table Role {
-  id int [primary key]
-  name varchar(255)
 }
 
 Table Client {
   id int [primary key]
   name varchar(255)
-  password varchar(255)
   email varchar(255)
+}
+
+Table Role {
+  id int [primary key]
+  name varchar(255)
 }
 
 Table Order {
