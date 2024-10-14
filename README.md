@@ -1,7 +1,7 @@
 # Косяков Матвей гр. 253505
 
 # Online store of alcoholic beverages
-# DBSM: PostgreSQL
+# DBSM: MySQL
 
 ## Функциональные требования:
 
@@ -33,82 +33,102 @@
    - *id*: INT (Primary Key)
    - *name*: VARCHAR(255)
    - *description*: VARCHAR(255)
-   - *price*: REAL
+   - *price*: DECIMAL(10, 2)
    - *available_quantity*: INT
    - *brand*: VARCHAR(255)
-   - *alcohol_percentage*: REAL
+   - *alcohol_percentage*: DECIMAL(5, 2)
+   - *created_at* TIMESTAMP
+   - *updated_at* TIMESTAMP
    - *category_id*: INT (One-To-Many)
 
 2. **Category**
    - *id*: INT (Primary Key)
    - *name*: VARCHAR(255)
+   - *created_at* TIMESTAMP
 
 3. **User**
    - *id*: INT (Primary Key)
    - *email*: VARCHAR(255)
    - *password_hash*: TEXT
-   - *refresh_token*: TEXT
+   - *created_at* TIMESTAMP
+   - *updated_at* TIMESTAMP
    - *role_id*: INT (One-To-Many)
 
 4. **Employee**
    - *id*: INT (Primary Key)
    - *first_name*: VARCHAR(255)
    - *last_name*: VARCHAR(255)
-   - *salary*: REAL
+   - *salary*: DECIMAL(10, 2)
    - *phone*: CHAR(50)
    - *position*: VARCHAR(255)
    - *email*: VARCHAR(255)
+   - *created_at* TIMESTAMP
+   - *updated_at* TIMESTAMP
 
 5. **Client**
    - *id*: INT (Primary Key)
    - *name*: VARCHAR(255)
    - *email*: VARCHAR(255)
+   - *created_at* TIMESTAMP
+   - *updated_at* TIMESTAMP
 
 6. **Role**
    - *id*: INT (Primary Key)
    - *name*: VARCHAR(255)
+   - *created_at* TIMESTAMP
 
 7. **Order**
    - *id*: INT (Primary Key)
-   - *date*: DATE
-   - *price*: REAL
+   - *price*: DECIMAL(10, 2)
+   - *created_at* TIMESTAMP
+   - *updated_at* TIMESTAMP
    - *client_id*: INT (One-To-Many)
 
 8. **OrderItem**
    - *id*: INT (Primary Key)
    - *beverage_quantity*: INT
-   - *beverage_price*: REAL
+   - *beverage_price*: DECIMAL(10, 2)
+   - *created_at* TIMESTAMP
+   - *updated_at* TIMESTAMP
    - *beverage_id*: INT (One-To-Many)
    - *order_id*: INT (One-To-Many)
 
-9.  **Cart**
-    - *id*: INT (Primary Key)
-    - *price*: REAL
-    - *client_id*: INT (One-To-One)
+9. **Cart**
+   - *id*: INT (Primary Key)
+   - *price*: DECIMAL(10, 2)
+   - *created_at* TIMESTAMP
+   - *updated_at* TIMESTAMP
+   - *client_id*: INT (One-To-One)
 
 10. **CartItem**
     - *id*: INT (Primary Key)
     - *beverage_quantity*: INT
-    - *beverage_price*: REAL
+    - *beverage_price*: DECIMAL(10, 2)
+    - *created_at* TIMESTAMP
+    - *updated_at* TIMESTAMP
     - *beverage_id*: INT (One-To-Many)
     - *cart_id*: INT (One-To-Many)
 
 11. **Review**
     - *id*: INT (Primary Key)
-    - *content*: VARCHAR
+    - *content*: TEXT
     - *rating*: INT
-    - *date*: DATE
+    - *created_at* TIMESTAMP
+    - *updated_at* TIMESTAMP
     - *beverage_id*: INT (One-To-Many)
     - *client_id*: INT (One-To-Many)
 
-12.  **Discount**
-     - *id*: INT (Primary Key)
-     - *name*: VARCHAR(255)
-     - *description*: VARCHAR(255)
-     - *percent*: REAL
-     - *is_active*: BOOLEAN
+12. **Discount**
+    - *id*: INT (Primary Key)
+    - *name*: VARCHAR(255)
+    - *description*: VARCHAR(255)
+    - *percent*: DECIMAL(5, 2)
+    - *is_active*: BOOLEAN
+    - *created_at* TIMESTAMP
 
-13.  **BeverageDiscount**
-     - *id*: INT (Primary Key)
-     - *beverage_id*: INT (Many-To-Many)
-     - *discount_id*: INT (Many-To-Many)
+13. **BeverageDiscount**
+    - *id*: INT (Primary Key)
+    - *created_at* TIMESTAMP
+    - *updated_at* TIMESTAMP
+    - *beverage_id*: INT (Many-To-Many)
+    - *discount_id*: INT (Many-To-Many)
