@@ -1,0 +1,131 @@
+-- Create tables
+
+CREATE TABLE IF NOT EXISTS "Beverage" (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    available_quantity INT NOT NULL,
+    brand VARCHAR(255) NOT NULL,
+    alcohol_percentage DECIMAL(5, 2),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    category_id INT NOT NULL REFERENCES "Category" (id),
+    CONSTRAINT check_alcohol_percentage CHECK (
+        alcohol_percentage >= 0.0
+        AND alcohol_percentage <= 100.0
+    )
+);
+
+CREATE TABLE IF NOT EXISTS "Category" (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "User" (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    role_id INT NOT NULL REFERENCES "Role" (id)
+);
+
+CREATE TABLE IF NOT EXISTS "Employee" (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    salary DECIMAL(10, 2) NOT NULL,
+    phone CHAR(50),
+    position VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "Client" (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "Role" (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "Order" (
+    id SERIAL PRIMARY KEY,
+    price DECIMAL(10, 2) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    client_id INT NOT NULL REFERENCES "Client" (id),
+    CONSTRAINT check_price CHECK (price >= 0.0)
+);
+
+CREATE TABLE IF NOT EXISTS "OrderItem" (
+    id SERIAL PRIMARY KEY,
+    beverage_quantity INT NOT NULL,
+    beverage_price DECIMAL(10, 2) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    beverage_id INT NOT NULL REFERENCES "Beverage" (id),
+    order_id INT NOT NULL REFERENCES "Order" (id)
+);
+
+CREATE TABLE IF NOT EXISTS "Cart" (
+    id SERIAL PRIMARY KEY,
+    price DECIMAL(10, 2) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    client_id INT NOT NULL REFERENCES "Client" (id)
+);
+
+CREATE TABLE IF NOT EXISTS "CartItem" (
+    id SERIAL PRIMARY KEY,
+    beverage_quantity INT NOT NULL,
+    beverage_price DECIMAL(10, 2) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    beverage_id INT NOT NULL REFERENCES "Beverage" (id),
+    cart_id INT NOT NULL REFERENCES "Cart" (id)
+);
+
+CREATE TABLE IF NOT EXISTS "Review" (
+    id SERIAL PRIMARY KEY,
+    content TEXT NOT NULL,
+    rating INT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    beverage_id INT NOT NULL REFERENCES "Beverage" (id),
+    client_id INT NOT NULL REFERENCES "Client" (id),
+    CONSTRAINT check_rating CHECK (
+        rating >= 1
+        AND rating <= 5
+    )
+);
+
+CREATE TABLE IF NOT EXISTS "Discount" (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    percent DECIMAL(5, 2) NOT NULL,
+    is_active BOOLEAN NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT check_percent CHECK (
+        percent >= 0.0
+        AND percent <= 100.0
+    )
+);
+
+CREATE TABLE IF NOT EXISTS "BeverageDiscount" (
+    id SERIAL PRIMARY KEY,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    beverage_id INT NOT NULL REFERENCES "Beverage" (id),
+    discount_id INT NOT NULL REFERENCES "Discount" (id)
+);

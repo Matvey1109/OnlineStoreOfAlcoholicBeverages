@@ -1,7 +1,7 @@
 # Косяков Матвей гр. 253505
 
 # Online store of alcoholic beverages
-# DBSM: MySQL
+# DBSM: PostgreSQL
 
 ## Функциональные требования:
 
