@@ -119,8 +119,8 @@ INSERT INTO
         beverage_id,
         order_id
     )
-VALUES (1, 25.00, 9, 1),
-    (1, 15.00, 10, 2);
+VALUES (1, 25.00, 9, 3),
+    (1, 15.00, 10, 4);
 
 INSERT INTO "Cart" (price, client_id) VALUES (37.00, 1), (20.00, 2);
 

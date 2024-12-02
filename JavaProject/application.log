@@ -1,0 +1,83 @@
+[2024-11-23 01:10:22] [INFO] Application started
+[2024-11-23 01:10:28] [INFO] getAllBeverages()
+[2024-11-23 13:23:55] [INFO] Application started
+[2024-11-23 13:23:58] [INFO] getAllBeverages()
+[2024-11-23 13:32:36] [INFO] getAllBeverages()
+[2024-11-23 13:32:55] [INFO] getAllBeverages()
+[2024-11-23 13:51:16] [INFO] getAllBeverages()
+[2024-11-23 13:51:48] [INFO] Login view accessed.
+[2024-11-23 13:53:14] [WARN] Login failed for email: admin@gmail.com
+[2024-11-23 13:55:52] [INFO] Login view accessed.
+[2024-11-23 13:56:01] [WARN] Login failed for email: admin@gmail.com
+[2024-11-23 13:56:03] [INFO] Login view accessed.
+[2024-11-23 13:56:10] [INFO] User authenticated: admin@gmail.com
+[2024-11-23 13:57:11] [INFO] Login view accessed.
+[2024-11-23 13:57:29] [INFO] User authenticated: employee@gmail.com
+[2024-11-23 14:09:12] [INFO] Login view accessed.
+[2024-11-23 14:09:27] [INFO] User authenticated: admin@gmail.com
+[2024-11-23 14:13:03] [INFO] Login view accessed.
+[2024-11-23 14:13:11] [INFO] User authenticated: admin@gmail.com
+[2024-11-23 14:17:00] [INFO] Login view accessed.
+[2024-11-23 14:17:17] [INFO] User authenticated: admin@gmail.com
+[2024-11-23 14:17:43] [INFO] Login view accessed.
+[2024-11-23 14:17:50] [INFO] User authenticated: admin@gmail.com
+[2024-11-23 14:18:15] [INFO] Login view accessed.
+[2024-11-23 14:18:26] [INFO] User authenticated: admin@gmail.com
+[2024-11-23 14:21:21] [INFO] Login view accessed.
+[2024-11-23 14:21:26] [INFO] User authenticated: admin@gmail.com
+[2024-11-23 14:22:06] [INFO] Login view accessed.
+[2024-11-23 14:22:11] [INFO] User authenticated: admin@gmail.com
+[2024-11-23 14:26:14] [INFO] getAllBeverages()
+[2024-11-23 14:42:28] [INFO] getAllBeverages()
+[2024-11-23 14:44:32] [INFO] getAllBeverages()
+[2024-11-23 14:47:25] [INFO] getAllBeverages()
+[2024-11-23 14:47:46] [INFO] getAllBeverages()
+[2024-11-23 14:48:15] [INFO] getBeveragesByCategoryName() with categoryName: Wines
+[2024-11-23 14:52:42] [INFO] getAllBeverages()
+[2024-11-23 14:52:58] [INFO] getAllBeverages()
+[2024-11-23 14:54:21] [INFO] getAllBeverages()
+[2024-11-23 14:54:38] [INFO] getAllBeverages()
+[2024-11-23 14:54:54] [INFO] getAllBeverages()
+[2024-11-23 14:55:09] [INFO] getAllBeverages()
+[2024-11-23 14:55:28] [INFO] getAllBeverages()
+[2024-11-23 14:55:40] [INFO] getBeveragesByCategoryName() with categoryName: Wines
+[2024-11-23 14:55:55] [INFO] getAllBeverages()
+[2024-11-23 14:56:00] [INFO] getBeveragesByCategoryName() with categoryName: Alcoholic Drinks
+[2024-11-26 16:08:15] [INFO] getAllBeverages()
+[2024-11-26 16:09:17] [INFO] getAllBeverages()
+[2024-11-26 16:09:35] [INFO] getBeveragesByCategoryName() with categoryName: Cocktails
+[2024-11-26 16:11:15] [INFO] Login view accessed.
+[2024-11-26 16:11:21] [INFO] User authenticated: admin@gmail.com
+[2024-11-26 16:14:00] [INFO] Login view accessed.
+[2024-11-26 16:14:10] [INFO] User authenticated: client@gmail.com
+[2024-11-26 16:14:14] [INFO] getAllBeverages()
+[2024-11-26 16:14:43] [INFO] getAllBeverages()
+[2024-11-26 16:31:16] [INFO] Login view accessed.
+[2024-11-26 16:31:32] [INFO] User authenticated: client@gmail.com
+[2024-11-26 16:40:46] [INFO] Login view accessed.
+[2024-11-26 16:40:59] [INFO] User authenticated: client@gmail.com
+[2024-11-26 17:13:11] [INFO] Login view accessed.
+[2024-11-26 17:13:30] [INFO] Login view accessed.
+[2024-11-26 17:13:42] [INFO] User authenticated: client@gmail.com
+[2024-11-26 17:16:32] [INFO] Login view accessed.
+[2024-11-26 17:16:40] [INFO] User authenticated: client@gmail.com
+[2024-11-26 17:16:42] [INFO] getAllBeverages()
+[2024-11-26 17:17:06] [INFO] Login view accessed.
+[2024-11-26 17:17:13] [INFO] User authenticated: client@gmail.com
+[2024-11-26 17:17:28] [INFO] Login view accessed.
+[2024-11-26 17:17:32] [INFO] User authenticated: client@gmail.com
+[2024-11-26 17:21:51] [INFO] getAllBeverages()
+[2024-11-26 17:22:12] [INFO] getBeveragesByCategoryName() with categoryName: Alcoholic Drinks
+[2024-11-26 17:22:22] [INFO] Login view accessed.
+[2024-11-26 17:22:35] [INFO] User authenticated: client@gmail.com
+[2024-11-26 17:27:04] [INFO] getAllBeverages()
+[2024-11-26 17:27:09] [INFO] Login view accessed.
+[2024-11-26 17:27:20] [INFO] User authenticated: client@gmail.com
+[2024-11-26 17:30:29] [INFO] Login view accessed.
+[2024-11-26 17:30:33] [INFO] User authenticated: client@gmail.com
+[2024-11-26 17:35:38] [INFO] Login view accessed.
+[2024-11-26 17:35:52] [INFO] User authenticated: client@gmail.com
+[2024-11-26 17:36:00] [INFO] getAllBeverages()
+[2024-11-26 17:36:24] [INFO] getAllBeverages()
+[2024-11-26 17:49:57] [INFO] Login view accessed.
+[2024-11-26 17:50:01] [INFO] User authenticated: client@gmail.com

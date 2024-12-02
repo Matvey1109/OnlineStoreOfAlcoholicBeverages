@@ -1,0 +1,44 @@
+src/
+├── Main.java
+├── config/
+│   ├── DatabaseConfig.java
+├── models/
+│   ├── Beverage.java
+│   ├── Category.java
+│   ├── User.java
+│   ├── Employee.java
+│   ├── Client.java
+│   ├── Role.java
+│   ├── Order.java
+│   ├── OrderItem.java
+│   ├── Cart.java
+│   ├── CartItem.java
+│   ├── Review.java
+│   ├── Discount.java
+│   ├── BeverageDiscount.java
+├── dao/
+│   ├── BeverageDAO.java
+│   ├── CategoryDAO.java
+│   ├── UserDAO.java
+│   ├── OrderDAO.java
+│   ├── CartDAO.java
+│   ├── ReviewDAO.java
+│   ├── DiscountDAO.java
+├── services/
+│   ├── AuthService.java
+│   ├── UserService.java
+│   ├── BeverageService.java
+│   ├── OrderService.java
+│   ├── CartService.java
+│   ├── ReviewService.java
+│   ├── DiscountService.java
+├── utils/
+│   ├── Logger.java
+│   ├── InputValidator.java
+├── views/
+│   ├── MainMenu.java
+│   ├── BeverageMenu.java
+│   ├── CartMenu.java
+│   ├── OrderMenu.java
+│   ├── AdminMenu.java
+│   ├── EmployeeMenu.java
