@@ -92,7 +92,19 @@ public class CartDAO {
                                         (SELECT id FROM "Cart" WHERE client_id = ?),
                                         ?,
                                         ?,
-                                        (SELECT price FROM "Beverage" WHERE id = ?)
+                                        (
+                                            SELECT
+                                                CASE
+                                                    WHEN D.percent IS NOT NULL AND D.is_active THEN
+                                                        B.price - (B.price * D.percent / 100.0)
+                                                    ELSE B.price
+                                                END AS final_price
+                                            FROM "Beverage" B
+                                            LEFT JOIN "BeverageDiscount" BD ON B.id = BD.beverage_id
+                                            LEFT JOIN "Discount" D ON BD.discount_id = D.id
+                                            WHERE B.id = ?
+                                            LIMIT 1
+                                        )
                                     );
                                 """;
 

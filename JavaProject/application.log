@@ -163,3 +163,13 @@
 [2024-12-04 18:52:06] [INFO] Login view accessed.
 [2024-12-04 18:52:14] [INFO] User authenticated: client@gmail.com
 [2024-12-04 18:52:17] [INFO] getAllBeverages()
+[2024-12-04 19:27:43] [INFO] getAllBeverages()
+[2024-12-04 19:27:55] [INFO] getBeveragesByCategoryName() with categoryName: Alcoholic Drinks
+[2024-12-04 19:28:10] [INFO] Login view accessed.
+[2024-12-04 19:28:36] [INFO] User authenticated: admin@gmail.com
+[2024-12-04 19:34:51] [INFO] Login view accessed.
+[2024-12-04 19:34:55] [INFO] User authenticated: client@gmail.com
+[2024-12-04 19:38:47] [INFO] Login view accessed.
+[2024-12-04 19:38:51] [WARN] Login failed for email: client@gmail.com
+[2024-12-04 19:38:52] [INFO] Login view accessed.
+[2024-12-04 19:38:56] [INFO] User authenticated: client@gmail.com
