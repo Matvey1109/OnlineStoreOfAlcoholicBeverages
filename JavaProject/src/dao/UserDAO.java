@@ -72,20 +72,22 @@ public class UserDAO {
         return user;
     }
 
-    public void addUser(User user) {
-        String query = "INSERT INTO \"User\" (email, password_hash, role_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?)";
-
+    public boolean addUser(User user) {
+        String query = """
+                    INSERT INTO "User" (email, password_hash, role_id, created_at, updated_at)
+                    VALUES (?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+                """;
         try (Connection conn = DatabaseConfig.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1, user.getEmail());
             stmt.setString(2, user.getPasswordHash());
             stmt.setInt(3, user.getRoleId());
-            stmt.setTimestamp(4, user.getCreatedAt());
-            stmt.setTimestamp(5, user.getUpdatedAt());
-            stmt.executeUpdate();
+            return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
+
 }

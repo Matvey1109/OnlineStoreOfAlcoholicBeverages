@@ -1,4 +1,6 @@
 -- Triggers
+--  functions = (sum, count)
+--  procedures = transactions (insert, select)
 
 -- #1
 CREATE OR REPLACE FUNCTION update_cart_total()
@@ -92,6 +94,36 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER auto_update_timestamp BEFORE
+CREATE
+OR REPLACE TRIGGER auto_update_timestamp BEFORE
 UPDATE ON "Beverage" FOR EACH ROW
 EXECUTE FUNCTION update_timestamp ();
+
+-- #6
+
+-- CREATE EXTENSION IF NOT EXISTS pgcrypto;
+-- NEW.password_hash = encode(
+--     digest (NEW.password_hash, 'sha256'),
+--     'hex'
+-- );
+
+CREATE OR REPLACE FUNCTION validate_user()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.email !~* '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        THEN RAISE EXCEPTION 'Invalid email';
+    END IF;
+
+    NEW.password_hash = 'hashed_' || NEW.password_hash;
+
+    IF NEW.role_id IS NULL
+        THEN NEW.role_id = 1;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE
+OR REPLACE TRIGGER auto_validate_user BEFORE INSERT ON "User" FOR EACH ROW
+EXECUTE FUNCTION validate_user ();

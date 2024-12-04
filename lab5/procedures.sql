@@ -75,7 +75,7 @@ END;
 $$;
 
 CALL add_user (
-    'newuser@example.com',
-    'hashed_password_4',
-    1
+    'newuser2@example.com',
+    'password_5',
+    2
 );

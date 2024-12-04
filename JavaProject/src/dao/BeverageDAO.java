@@ -103,11 +103,11 @@ public class BeverageDAO {
         return beverages;
     }
 
-    // Add a new beverage to the database
     public void addBeverage(Beverage beverage) {
-        String query = "INSERT INTO Beverage (name, description, price, available_quantity, brand, alcohol_percentage, created_at, updated_at, category_id) "
-                +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = """
+                        INSERT INTO "Beverage" (name, description, price, available_quantity, brand, alcohol_percentage, created_at, updated_at, category_id)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """;
 
         try (Connection conn = DatabaseConfig.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -129,24 +129,22 @@ public class BeverageDAO {
         }
     }
 
-    // Update an existing beverage
     public void updateBeverage(Beverage beverage) {
-        String query = "UPDATE Beverage SET name = ?, description = ?, price = ?, available_quantity = ?, brand = ?, alcohol_percentage = ?, "
-                +
-                "updated_at = ?, category_id = ? WHERE id = ?";
+        String query = """
+                UPDATE "Beverage" SET
+                    price = ?,
+                    available_quantity = ?,
+                    updated_at = ?
+                WHERE id = ?
+                """;
 
         try (Connection conn = DatabaseConfig.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setString(1, beverage.getName());
-            stmt.setString(2, beverage.getDescription());
-            stmt.setBigDecimal(3, beverage.getPrice());
-            stmt.setInt(4, beverage.getAvailableQuantity());
-            stmt.setString(5, beverage.getBrand());
-            stmt.setBigDecimal(6, beverage.getAlcoholPercentage());
-            stmt.setTimestamp(7, beverage.getUpdatedAt());
-            stmt.setInt(8, beverage.getCategoryId());
-            stmt.setInt(9, beverage.getId());
+            stmt.setBigDecimal(1, beverage.getPrice());
+            stmt.setInt(2, beverage.getAvailableQuantity());
+            stmt.setTimestamp(3, beverage.getUpdatedAt());
+            stmt.setInt(4, beverage.getId());
 
             stmt.executeUpdate();
 
@@ -157,7 +155,9 @@ public class BeverageDAO {
 
     // Delete a beverage by ID
     public void deleteBeverage(int id) {
-        String query = "DELETE FROM Beverage WHERE id = ?";
+        String query = """
+                        DELETE FROM "Beverage" WHERE id = ?
+                """;
 
         try (Connection conn = DatabaseConfig.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {

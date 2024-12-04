@@ -3,9 +3,11 @@ package services;
 import dao.CartDAO;
 import dao.ClientDAO;
 import dao.OrderDAO;
+import dao.ReviewDAO;
 import models.CartItem;
 import models.Client;
 import models.Order;
+import models.Review;
 
 import java.util.List;
 
@@ -13,6 +15,7 @@ public class ClientService {
     private final ClientDAO clientDAO = new ClientDAO();
     private final CartDAO cartDAO = new CartDAO();
     private final OrderDAO orderDAO = new OrderDAO();
+    private final ReviewDAO reviewDAO = new ReviewDAO();
 
     public Client getClientByUserEmail(String userEmail) {
         return clientDAO.getClientByUserEmail(userEmail);
@@ -45,4 +48,19 @@ public class ClientService {
         Client client = getClientByUserEmail(userEmail);
         return orderDAO.createOrderFromCart(client.getId());
     }
+
+    public boolean addReview(String userEmail, int beverageId, int rating, String content) {
+        if (rating < 1 || rating > 5) {
+            System.out.println("Invalid rating. Please enter a value between 1 and 5.");
+            return false;
+        }
+
+        Client client = getClientByUserEmail(userEmail);
+        return reviewDAO.addReview(client.getId(), beverageId, rating, content);
+    }
+
+    public List<Review> getAllReviews() {
+        return reviewDAO.fetchAllReviews();
+    }
+
 }
