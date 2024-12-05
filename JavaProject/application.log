@@ -173,3 +173,6 @@
 [2024-12-04 19:38:51] [WARN] Login failed for email: client@gmail.com
 [2024-12-04 19:38:52] [INFO] Login view accessed.
 [2024-12-04 19:38:56] [INFO] User authenticated: client@gmail.com
+[2024-12-04 19:40:27] [INFO] getAllBeverages()
+[2024-12-04 20:17:43] [INFO] Login view accessed.
+[2024-12-04 20:17:48] [INFO] User authenticated: admin@gmail.com
